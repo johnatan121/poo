@@ -1,0 +1,12 @@
+class numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __add__(self, outro):
+        return self.valor + outro.valor
+
+
+n1 = numero(10)
+n2 = numero(20)
+
+print(f"soma dos numeros {n1 + n2}")
