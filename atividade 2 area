@@ -1,0 +1,11 @@
+#att multiplicação de objetos
+class caixa:
+    def __init__(self, largura, altura):
+        self.largura = largura
+        self.altura = altura
+
+    def __mul__(self, outro):
+        return self.largura *self.altura
+
+c= caixa(10, 2) 
+print( c * c )       
