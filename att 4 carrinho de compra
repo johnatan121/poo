@@ -1,0 +1,16 @@
+class produto:
+    def __init__(self, nome, preco):
+        self.nome = nome
+        self.preco = preco
+class carrinho:
+    def __init__(self):
+        self.itens =[]
+
+    def __add__(self, produto):
+        self.itens.append(produto)
+        print(f"{produto.nome} adicionar ao carrinho.")
+        return self
+    
+meu_carrinho = carrinho()
+p1 = produto("carro",  15.000)
+meu_carrinho = meu_carrinho + p1
