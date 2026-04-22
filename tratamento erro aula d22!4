@@ -1,0 +1,64 @@
+class Pessoa:
+    def __init__(self, nome, idade, cpf, cidade):
+        self.nome = nome
+        self.idade = idade
+        self.cpf = cpf
+        self.cidade = cidade
+
+    @property
+    def nome(self):
+        return self._nome
+    @nome.setter
+    def nome(self,nome):
+        if not nome:
+            raise ValueError("nome e obrigatorio")
+        self._nome = nome
+    @property
+    def idade(self):
+        return self._idade
+    @idade.setter
+    def idade(self, idade):
+        if idade <= 0:
+            raise ValueError("idade infalida")
+        self._idade = idade
+
+
+class PessoaPresenter:
+    @staticmethod
+    def apresentacao( saida):
+        return {
+            "nome": saida.nome,
+            "idade": saida.idade,
+            "cidade": saida.cidade
+        } 
+
+    @staticmethod
+    def apresentacao_erros(erro, codigo):
+        return {
+            "error" : erro,
+            "codigo": codigo
+        }               
+        
+try:# apresetacao de uma pesso (classe)
+    p1 = Pessoa("andre",32,123335, "goiania")
+    retorno= PessoaPresenter.apresentacao(p1)
+    print(retorno)
+except ValueError as e:
+    retorno = PessoaPresenter.apresentacao_erros (e,500)
+    print(retorno) 
+
+"""try: #lista com varios usuarios (classe)
+    p1 = Pessoa("andre",32,123335, "goiania")
+    p2 = Pessoa("ana",30,123335, "goiania")
+    p3 = Pessoa("luiz",23,123335, "goiania")
+
+    lista= [p1,p2,p3]
+
+    retorno = [
+        PessoaPresenter.apresentacao(p)
+        for p in lista
+    ]
+    print(retorno)
+except ValueError as e:
+    retorno = PessoaPresenter.apresentacao_erros (e,500)
+    print(retorno) """      
