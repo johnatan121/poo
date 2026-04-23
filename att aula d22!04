@@ -1,0 +1,14 @@
+class Pedido:
+    def __init__(self, valor):
+        self.valor = valor
+        
+    @staticmethod
+    def calcular_desconto(valor):
+        if valor> 100:
+            return valor* 0.10
+        else:
+            return 0
+
+meu_pedido = Pedido(100)
+desconto = Pedido.calcular_desconto(meu_pedido.valor)   
+print(desconto)    
