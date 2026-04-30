@@ -1,0 +1,19 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+usuarios = []
+
+@app.route("/usuarios", methods = ["post"])
+def cadastrar():
+    dados = request.json
+    usuario = {
+        "id": len(usuarios) + 1,
+        "nome": dados["nome"],
+        "email": dados.get("email", "sem email")
+    }
+    usuarios.append(usuario)
+    return jsonify(usuario), 201
+
+if __name__ == "__main__":
+    app.run(debug=True)
